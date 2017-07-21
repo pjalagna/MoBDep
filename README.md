@@ -16,11 +16,24 @@ html?
 <tr> <td> Screen Language </td> <td> . </td> </tr> 
 <tr> <td> . </td> 
 <td> 
-sef screen :=
-[1] ="screen" <name> =":=" ="(" // screenStuff =")" . 
+def screen :=
+[1] ="screen" <name> =":=" ="(" // screenStuff =")" =name ="screen" =";" . 
 [2] "badly formed screen statement" error .
 ;
 
+</td> 
+</tr> 
+<tr> <td> example </td> <td> . </td> </tr> 
+<tr> <td> . </td> 
+<td> 
+screen logon ( 
+Line 1 : "   " , "User Name" , txt-user ; object-user ( l1.min=6 , l1.max=10 ) ;
+Line 2 : "   " , "Password"  , pwd-pcode ; object-pcode ( l1.min = 1 ) ;
+Line 3 : ; 
+Line 4 : "   " , "Role" , list-Role ; object-Role ( load=SQL2() l1.min=1 ) ;
+Line 5 : button-Logon("Process") ; object-Logon ( onClick=encode1() , to=LogonProc.php );
+hidden : date ; object-date ( load=dateload() ) ;
+) logon screen ;
 </td> 
 </tr> 
 </table>

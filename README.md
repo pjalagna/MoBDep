@@ -37,7 +37,7 @@ def screenStuff :- </br>
 <tr> <td> . </td> 
 <td> 
 screen logon ( </br>
-CSS : ( BLogon.color = RED ) ;
+CSS : ( BLogon.color = RED ) ; </br>
 Line 1 : "   " , "User Name" , txt-user ; object user ( l1.min=6 , l1.max=10 ) ;</br>
 Line 2 : "   " , "Password"  , pwd-pcode ; object pcode ( l1.min = 1 ) ;</br>
 Line 3 : ; </br>

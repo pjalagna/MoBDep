@@ -16,10 +16,10 @@ html?
 <tr> <td> Screen Language </td> <td> . </td> </tr> 
 <tr> <td> . </td> 
 <td> 
-def screen :=
-[1] ="screen" <name> =":=" ="(" // screenStuff =")" =name ="screen" =";" . 
-[2] "badly formed screen statement" error .
-;
+def screen :=</br>
+[1] ="screen" <name> =":=" ="(" // screenStuff =")" =name ="screen" =";" . </br>
+[2] "badly formed screen statement" error . </br>
+; </br>
 
 </td> 
 </tr> 

@@ -26,14 +26,14 @@ def screen :=
 <tr> <td> example </td> <td> . </td> </tr> 
 <tr> <td> . </td> 
 <td> 
-screen logon ( 
-Line 1 : "   " , "User Name" , txt-user ; object-user ( l1.min=6 , l1.max=10 ) ;
-Line 2 : "   " , "Password"  , pwd-pcode ; object-pcode ( l1.min = 1 ) ;
-Line 3 : ; 
-Line 4 : "   " , "Role" , list-Role ; object-Role ( load=SQL2() l1.min=1 ) ;
-Line 5 : button-Logon("Process") ; object-Logon ( onClick=encode1() , to=LogonProc.php );
-hidden : date ; object-date ( load=dateload() ) ;
-) logon screen ;
+screen logon ( </br>
+Line 1 : "   " , "User Name" , txt-user ; object-user ( l1.min=6 , l1.max=10 ) ;</br>
+Line 2 : "   " , "Password"  , pwd-pcode ; object-pcode ( l1.min = 1 ) ;</br>
+Line 3 : ; </br>
+Line 4 : "   " , "Role" , list-Role ; object-Role ( load=SQL2() l1.min=1 ) ;</br>
+Line 5 : button-Logon("Process") ; object-Logon ( onClick=encode1() , to=LogonProc.php );</br>
+hidden : date ; object-date ( load=dateload() ) ;</br>
+) logon screen ;</br>
 </td> 
 </tr> 
 </table>

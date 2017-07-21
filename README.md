@@ -21,18 +21,29 @@ def screen :=</br>
 [2] "badly formed screen statement" error . </br>
 ; </br>
 
+def screenStuff :- </br>
+[1] <x1> </br>
+[2] ?x1="Line" // linestuff tail. </br>
+[3] ?x1="object" // objectStuff tail.</br>
+[4] ?x1="hidden" // hiddenStuff tail.</br>
+[4.5] ?x1="css" // cssStuff tail. </br>
+[5] ?x1=")" .</br>
+[6] "badly formed screen (internal) statement" error .</br>
+;</br>
+
 </td> 
 </tr> 
 <tr> <td> example </td> <td> . </td> </tr> 
 <tr> <td> . </td> 
 <td> 
 screen logon ( </br>
-Line 1 : "   " , "User Name" , txt-user ; object-user ( l1.min=6 , l1.max=10 ) ;</br>
-Line 2 : "   " , "Password"  , pwd-pcode ; object-pcode ( l1.min = 1 ) ;</br>
+CSS : ( BLogon.color = RED ) ;
+Line 1 : "   " , "User Name" , txt-user ; object user ( l1.min=6 , l1.max=10 ) ;</br>
+Line 2 : "   " , "Password"  , pwd-pcode ; object pcode ( l1.min = 1 ) ;</br>
 Line 3 : ; </br>
-Line 4 : "   " , "Role" , list-Role ; object-Role ( load=SQL2() l1.min=1 ) ;</br>
-Line 5 : button-Logon("Process") ; object-Logon ( onClick=encode1() , to=LogonProc.php );</br>
-hidden : date ; object-date ( load=dateload() ) ;</br>
+Line 4 : "   " , "Role" , list-Role ; object Role ( load=SQL2() l1.min=1 ) ;</br>
+Line 5 : button-BLogon("Process") ; object Logon ( onClick=encode1() , to=LogonProc.php );</br>
+hidden : date ; object date ( load=dateload() ) ;</br>
 ) logon screen ;</br>
 </td> 
 </tr> 

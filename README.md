@@ -12,6 +12,24 @@ html?
 (therefore understood by humans) and that can be directly compiled into a completed system
 </td> </tr> 
 </table>
+<table> <!-- keys -->
+<tr> <td> the process control of this document </td> <td> . </td> <td> . </td> </tr>
+<tr> <td> Paragraphs </td> <td> . </td> <td> . </td> </tr>
+<tr> <td> Clauses </td> <td> . </td> <td> . </td> </tr>
+<tr> <td> Verbs </td> <td> . </td> <td> . </td> </tr>
+<tr> <td> . </td> <td> Verb Failure </td> <td> . </td> </tr>
+<tr> <td> . </td> <td> Clause failure </td> <td> . </td> </tr>
+<tr> <td> . </td> <td> Paragraph Failure </td> <td> . </td> </tr>
+<tr> <td> . </td> <td> failure exceptions </td> <td> . </td> </tr>
+<tr> <td> . </td> <td> . </td> <td> . </td> </tr>
+<tr> <td> keys used in this document </td> <td> . </td> <td> . </td> </tr> 
+<tr> <td> . </td> <td> <bold> key </bold>  </td> <td> <bold> usage </bold> </td> </tr> 
+<tr> <td> . </td> <td> {x} </td> <td> input token to Variable "x" </td> </tr> 
+<tr> <td> . </td> <td> ?x=s </td> <td> test Variable "x" for equality to string in Variable s </td> </tr>
+<tr> <td> . </td> <td> ?x="s" </td> <td> test Variable "x" for equality to the string "s" </td> </tr> 
+<tr> <td> . </td> <td> ... (elipsis) </td> <td> go on to next clause </td> </tr>
+<tr> <td> . </td> <td> TAIL. </td> <td> enacts tail recursion (IE repeats paragraph) </td> </tr>
+</table>
 <table> <!-- screen language -->
 <tr> <td> Screen Language </td> <td> . </td> </tr> 
 <tr> <td> . </td> 
@@ -55,6 +73,7 @@ template is a 2x2 or 3x3
 <tr> <td> . </td> <td> . </td> </tr> 
 </table>
 <table> <!-- 3x3 -->
+<tr> <td> . </td> <td> . </td> <td> . </td> </tr> 
 <tr> <td> . </td> <td> . </td> <td> . </td> </tr> 
 <tr> <td> . </td> <td> . </td> <td> . </td> </tr> 
 </table>

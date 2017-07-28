@@ -30,6 +30,10 @@ html?
 <tr> <td> . </td> <td> ... (elipsis) </td> <td> go on to next clause </td> </tr>
 <tr> <td> . </td> <td> TAIL. </td> <td> enacts tail recursion (IE repeats paragraph) </td> </tr>
 </table>
+<table> <!-- note on screen produced -->
+<tr> <td> (1) Note on screens produced </td> <td> . </td> </tr> 
+<tr> <td> . </td> <td> in keeping with multi-language usage each label, name and list will be loaded from a database. </td> </tr> 
+</table>
 <table> <!-- screen language -->
 <tr> <td> Screen Language </td> <td> . </td> </tr> 
 <tr> <td> . </td> 

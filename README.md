@@ -3,7 +3,7 @@ Model Based Deployment
 html?
 <table> <!-- history -->
 <tr> <td> Name </td> <td> Date </td> <td> reason </td> </tr> 
-<tr> <td> Paul </td> <td> 7/21/2017 </td> <td> original </td> </tr> 
+<tr> <td> Paul </td> <td> 7/28/2017 </td> <td> original </td> </tr> 
 </table>
 <table> <!-- overview -->
 <tr> <td> Overview </td> <td> . </td> </tr> 
@@ -23,7 +23,7 @@ html?
 <tr> <td> . </td> <td> failure exceptions </td> <td> . </td> </tr>
 <tr> <td> . </td> <td> . </td> <td> . </td> </tr>
 <tr> <td> keys used in this document </td> <td> . </td> <td> . </td> </tr> 
-<tr> <td> . </td> <td> <bold> key </bold>  </td> <td> <bold> usage </bold> </td> </tr> 
+<tr> <td> . </td> <td> <b> key </b>  </td> <td> <bold> usage </bold> </td> </tr> 
 <tr> <td> . </td> <td> {x} </td> <td> input token to Variable "x" </td> </tr> 
 <tr> <td> . </td> <td> ?x=s </td> <td> test Variable "x" for equality to string in Variable s </td> </tr>
 <tr> <td> . </td> <td> ?x="s" </td> <td> test Variable "x" for equality to the string "s" </td> </tr> 
@@ -34,19 +34,20 @@ html?
 <tr> <td> Screen Language </td> <td> . </td> </tr> 
 <tr> <td> . </td> 
 <td> 
-def screen :=</br>
-[1] ="screen" <name> =":=" ="(" // screenStuff =")" =name ="screen" =";" . </br>
-[2] "badly formed screen statement" error . </br>
+def screen := </br>
+[[ 0 ]] {s1}</br>
+[[ 1 ]] ?s1="screen" {name} {s2} ?s2=":=" {s3} ?s3="(" // screenStuff =")" {s4} ?s4=name {s5} ?s5="screen" {s6} ?s6=";" . </br>
+[[ 2 ]] "badly formed screen statement" error fail. . </br>
 ; </br>
 
 def screenStuff :- </br>
-[1] <x1> </br>
-[2] ?x1="Line" // linestuff tail. </br>
-[3] ?x1="object" // objectStuff tail.</br>
-[4] ?x1="hidden" // hiddenStuff tail.</br>
-[4.5] ?x1="css" // cssStuff tail. </br>
-[5] ?x1=")" .</br>
-[6] "badly formed screen (internal) statement" error .</br>
+[[ 1 ]] {x1} </br>
+[[ 2 ]] ?x1="Line" // linestuff tail. </br>
+[[ 3 ]] ?x1="object" // objectStuff tail.</br>
+[[ 4 ]] ?x1="hidden" // hiddenStuff tail.</br>
+[[ 5 ]] ?x1="css" // cssStuff tail. </br>
+[[ 6 ]]  ?x1=")" . </br>
+[[ 7 ]] "badly formed screen (internal) statement" error fail. .</br>
 ;</br>
 
 </td> 

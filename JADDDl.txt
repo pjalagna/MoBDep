@@ -1,0 +1,42 @@
+/* file JADDDL.txt
+pja 2018-11-14 orig
+
+bassi script to take in data information during a JAD session
+format T <<name>> (( TKeys{,+} ) {TTags,+} )
+*/
+JDDL1.py /* outfile */ 
+DDLStart :-
+[[ 1 ]] ==T <<TName>> ==(( TKeys ==) TTags ==) actDDL tail. .
+[[ 2 ]] ==R <<Rel1Name>> reltypes <<Rel2Name>> ==; actRel tail. .
+[[ 2 ]] ==endend actFinal .
+;
+TKeys :-
+[[ 1 ]] TKey opTKey .
+;
+TKey :-
+[[ 1 ]] <<TKeyName>> actTKey .
+;
+opTKey :-
+[[ 1 ]] ==, TKey tail. .
+[[ 2 ]] .
+;
+TTags :-
+[[ 1 ]] ==) putback .
+[[ 2 ]] TTag opTTag .
+;
+TTag :-
+[[ 1 ]] <<TTagName>> actTTag .
+;
+opTTag :-
+[[ 1 ]] ==, TTag tail. .
+[[ 2 ]] .
+;
+relTypes :-
+[[ 1 ]] ==--#< "FOrder" "relType" ! .
+[[ 2 ]] ==>#-- "BOrder" "relType" ! .
+[[ 3 ]] ==--< "F1M" "relType" ! .
+[[ 4 ]] ==--0< "F0M" "relType" ! .
+[[ 5 ]] ==-- "F11" "relType" ! .
+;
+@ENDEND
+

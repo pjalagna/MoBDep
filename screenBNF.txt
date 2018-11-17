@@ -1,0 +1,91 @@
+/* 
+file screenBNF.txt
+2018-11-12 pja rewrite to changed =name to ==name
+--- NEEDS WORK get rid of complex tokens
+2018-11-07 pja need to design for complex tokens
+-- astuff name^=( c=v ,+ )
+-- estuff type:name( label )
+2018-11-07 pja added outfile tested for fword
+2018-11-05 pja added send list for buttons
+-- add sendList=listName as attribute 
+2018-11-04 pja found errors in language re-edited
+2018-10-30 pja redo
+*/
+ScreenProto.py
+Smain :-
+[[ 1 ]] ==screen <<SName>> ==(( screenStuff screenStuff2 ==)) screenAct tail. .
+[[ 2 ]] ==;; finalAct .
+;
+
+screenStuff :-
+[[ 1 ]] ==line <<LNumber>> ==( lineStuffs ==) lineFinalAct .
+[[ 2 ]] ==script scriptStuff .
+[[ 3 ]] attributes . 
+
+attributes :-
+[[ 1 ]] atribute attribute2 .
+;
+
+
+attribute :-
+[[ 1 ]]  ==attribute <<AttributeElementname>> ==( AStuffs ==) ARecAct .
+[[ 2 ]] =sendList <<sendName>> =( types =) sendListAct .
+;
+
+types :-
+[[ 1 ]] typeA type2 .
+;
+typeA :-
+[[ 1 ]]  ":.:" ".:." complexToken :.:<<type>>:<<name>>.:. typeListAct .
+;
+type2 :-
+[[ 1 ]] ==, typeA tail. 
+[[ 2 ]] .
+;
+
+
+attribute2 :-
+[[ 1 ]] ==, attribute tail. .
+[[ 2 ]] .
+;
+
+
+;
+screenStuff2 :-
+[[ 1 ]] ==, screenStuff tail. .
+[[ 2 ]] .
+;
+lineStuffs :-
+[[ 1 ]] lineStuff lineStuff2 .
+;
+
+lineStuff :-
+[[ 1 ]] <<literal>>
+[[ 2 ]] /* complex token */ type:<<name>> ==( <<Elabel>>  ==) ERecAct .
+;
+lineStuff2 :-
+[[ 1 ]] ==, lineStuff tail. .
+[[ 2 ]] .
+;
+
+scriptStuff :-
+[[ 1 ]] ==begin <<name>> <<textNotNameEnd>> <<name>> ==end addJSLibAct tail. .
+[[ 2 ]] ==include <<JSFilename>> JSFileAct tail. .
+[[ 3 ]] ==, tail
+[[ 4 ]] ==use <<JSLibName>> tail. .
+;
+
+AStuffs :-
+[[ 1 ]] AStuff AStuff2 .
+;
+
+AStuff :-
+[[ 1 ]] <<name>> === <<value>> CVAct  .
+;
+AStuff2 :-
+[[ 1 ]] ==, AStuff tail. .
+[[ 2 ]] .
+;
+
+
+

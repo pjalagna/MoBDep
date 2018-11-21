@@ -1,0 +1,137 @@
+# MoBDep
+Model Based Deployment
+<!-- css -->
+<style>
+table, td, th {
+    border: 1px solid black;
+}
+table { 
+    width: 100%;
+}
+
+th {
+    height: 50px;
+}
+</style>
+<table border='3'> <!-- history -->
+<tr> <td> Name </td> <td> Date </td> <td> reason </td> </tr> 
+<tr> <td> Paul </td> <td> 5/5/2018 </td> <td> added architecture </td> </tr> 
+<tr> <td> Paul </td> <td> 7/28/2017 </td> <td> original </td> </tr> 
+</table>
+<table border='3'> <!-- overview -->
+<tr> <td> Overview </td> <td> . </td> </tr> 
+<tr> <td> . </td> 
+<td> MOdel Based DEPloyment is a set of languages and processes that are used during JAD sessions 
+(therefore understood by humans) and that can be <b><u>directly</u></b> compiled into a completed system
+</td> </tr> 
+</table>
+<table border='3'> <!-- 2x2 -->
+<h1> deployed architecture </h1>
+<h3>
+<tr> <td> . </td> <td> this section covers the deployed architecture of the final system </td> </tr> 
+<tr> <td> screen </td> <td> html, css, javascript, php </td> </tr> 
+<tr> <td> server </td> <td> php </td> </tr> 
+<tr> <td> database </td> <td> mysql </td> </tr> 
+<tr> <td> . </td> <td> src diagram in uml me  </td> </tr>
+<tr> <td> . </td> <td> . </td> </tr>
+</table></h3>
+<h1> development Architecture </h1><h3>
+<table border='3'> <!-- 2x2 -->
+<tr> <td> . </td> <td> . </td> </tr> 
+<tr> <td> OS </td> <td> mac </td> </tr> 
+<tr> <td> language </td> <td> Python 2.7 </td> </tr>
+<tr> <td> database </td> <td> SQLite 3.0 </td> </tr>
+<tr> <td> . </td> <td> src diagram in uml me </td> </tr>
+</table></h3>
+<table border='3'> <!-- keys -->
+<tr> <td> the process control of this document </td> <td> . </td> <td> . </td> </tr>
+<tr> <td> Paragraphs </td> <td> . </td> <td> . </td> </tr>
+<tr> <td> Clauses </td> <td> . </td> <td> . </td> </tr>
+<tr> <td> Verbs </td> <td> . </td> <td> . </td> </tr>
+<tr> <td> . </td> <td> Verb Failure </td> <td> . </td> </tr>
+<tr> <td> . </td> <td> Clause failure </td> <td> . </td> </tr>
+<tr> <td> . </td> <td> Paragraph Failure </td> <td> . </td> </tr>
+<tr> <td> . </td> <td> failure exceptions </td> <td> . </td> </tr>
+<tr> <td> . </td> <td> . </td> <td> . </td> </tr>
+<tr> <td> keys used in this document </td> <td> . </td> <td> . </td> </tr> 
+<tr> <td> . </td> <td> <b> key </b>  </td> <td> <bold> usage </bold> </td> </tr> 
+<tr> <td> . </td> <td> {x} </td> <td> input token to Variable "x" </td> </tr> 
+<tr> <td> . </td> <td> ?x=s </td> <td> test Variable "x" for equality to string in Variable s </td> </tr>
+<tr> <td> . </td> <td> ?x="s" </td> <td> test Variable "x" for equality to the string "s" </td> </tr> 
+<tr> <td> . </td> <td> ... (elipsis) </td> <td> go on to next clause </td> </tr>
+<tr> <td> . </td> <td> TAIL. </td> <td> enacts tail recursion (IE repeats paragraph) </td> </tr>
+</table>
+<table border='3'> <!-- note on screen produced -->
+<tr> <td> (1) Note on screens produced </td> <td> . </td> </tr> 
+<tr> <td> . </td> <td> in keeping with multi-language usage each label, name and list will be loaded from a database. </td> </tr> 
+</table>
+<table border='3'> <!-- screen language -->
+<tr> <td> Screen Language </td> <td> . </td> </tr> 
+<tr> <td> . </td> 
+<td> 
+shorthand bnf "screen" {name} "((" //ScreenStuff "))" "end" =name ";"</br>
+
+</br>
+def screen := </br>
+[[ 0 ]] {s1}</br>
+[[ 1 ]] ?s1="screen" {name} {s2} ?s2=":=" {s3} ?s3="((" // screenStuff ="))" {s4} ?s4="end" {s5} ?s5=name {s6} ?s6=";" . </br>
+[[ 2 ]] "badly formed screen statement" error fail. . </br>
+; </br>
+</br>
+def screenStuff :- </br>
+[[ 1 ]] {x1} </br>
+[[ 2 ]] ?x1="Line" // linestuff tail. </br>
+[[ 3 ]] ?x1="object" // objectStuff tail.</br>
+[[ 4 ]] ?x1="hidden" // hiddenStuff tail.</br>
+[[ 5 ]] ?x1="css" // cssStuff tail. </br>
+[[ 6 ]]  ?x1=")" . </br>
+[[ 7 ]] "badly formed screen (internal) statement" error fail. .</br> 
+;</br>see screenStuff Note
+
+</td> 
+</tr> 
+<tr> <td> example </td> <td> . </td> </tr> 
+<tr> <td> . </td> 
+<td> 
+screen logon (( </br>
+CSS : ( BLogon.color = RED ) ; </br>
+Line 1 : "   " , "User Name" , txt-user ; object user ( l1.min=6 , l1.max=10 ) ;</br>
+Line 2 : "   " , "Password"  , pwd-pcode ; object pcode ( l1.min = 1 ) ;</br>
+Line 3 : ; </br>
+Line 4 : "   " , "Role" , list-Role ; object Role ( load=SQL2() l1.min=1 ) ;</br>
+Line 5 : button-BLogon("Process") ; object Logon ( onClick=encode1() , to=LogonProc.php );</br>
+hidden : date ; object date ( load=dateload() ) ;</br>
+) end logon ;</br>
+</td> 
+</tr> 
+</table>
+
+
+<table border='4'>
+<tr>
+<td> errata </td> <td> . </td>
+</tr>
+<tr>
+<td> . </td>
+<td>
+</br> screenstuff note:</br>
+one paradigme is to receive line information with vertical (column) placement implied. like the example </br>
+"line" 1 ".." , "user name"</br>
+implies that the "user name" label will be in column 2 wherever that column lands vertically. this is really the operation of HTML anyway. but we can apply all sorts of controls to the object.</br>
+the object is the profile of the thing named. anything can be named. so we can apply CSS to anything.
+</td>
+</tr>
+</table>
+
+template is a 2x2 or 3x3
+<h1> title </h1><h3>
+<table border='3'> <!-- 2x2 -->
+<tr> <td> . </td> <td> . </td> </tr> 
+<tr> <td> . </td> <td> . </td> </tr> 
+</table></h3>
+<h1> title </h1><h3>
+<table border='3'> <!-- 3x3 -->
+<tr> <td> . </td> <td> . </td> <td> . </td> </tr> 
+<tr> <td> . </td> <td> . </td> <td> . </td> </tr> 
+<tr> <td> . </td> <td> . </td> <td> . </td> </tr> 
+</table></h3>

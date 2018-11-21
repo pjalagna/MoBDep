@@ -1,5 +1,6 @@
 #file basiiHelper.py
 """history
+pja 11-20-2018 pja added aborts for pn blank
 pja 11/15/2018 added code in chk for '...'
 pja 11/14/2018 edited VWord to repeat on blank
 pja 11/10/2018 added code for ==name and <<name>>
@@ -90,6 +91,12 @@ def paragraph(ffo):
     while (pp == 0):
         pgn = VWord()
         print('pgf...' + pgn )
+        if (pgn == ''):
+           raw_input("error pgn blank ctl-c to abort")
+        #endif
+        if (pgn == '@eofeof'):
+           paw_input('unexpected end of file  ctl-c to abort')
+        #endif
         sec['pgn'] = pgn #27
         if (pgn.upper() == '@ENDEND'):
             pp = -1 #break
@@ -98,7 +105,7 @@ def paragraph(ffo):
             # add your name to the symbol table
             sec['mx3'] = sec['mx3'] + sec['hx3'].replace('%pn%',pgn)
             # manifest
-            sec['manifest']["P:"+pgn] = 'paragraph'
+            sec['manifest'][pgn + ':P'] = 'paragraph'
             # gen pgf header
             sec['pgx1'] = sec['hxp1'] .replace('%pgn%', pgn)
             sec['pgx3'] = sec['hxp3'] .replace('%pgn%', pgn)
@@ -176,7 +183,7 @@ def verbs():
                 rv = vn[2:]
                 vna = 'EQ' + sec['sy']['SQSQ'].SQin(rv)
                 # add call to cl2 via hcl2vn0
-                sec['cl2'] = sec['cl2'] + sec['hcl2vn0'].replace('%vn%',vna)
+                sec['cl2'] = sec['cl2'] + sec['hcl2vn0'].replace('%vn%',vn)
             #endif
                 # add uniquely to external rtn table and code base
                 vanl = -2 # prep
@@ -190,15 +197,22 @@ def verbs():
                 if (vanl < 0): 
                     #add to symbol table
                     sec['M'][vn] = vna
+                    # add your name to the symbol table
+                    ax = sec['hx3EQ'].replace('%vna%',vna)
+                    ax = ax.replace('%vn%',vn)
+                    sec['mx3'] = sec['mx3'] + ax
                     #add template hclEQ to stream code base
                     njx = sec['hclEQ'] # template
-                    njx = njx.replace('%rv%',rv)
-                    njx = njx.replace('%vn%',vna)
+                    njx = njx.replace('%rv%',rv) # na of ==na
+                    njx = njx.replace('%vna%',vna) # EQ_OP of ==(
+                    njx = njx.replace('%vn%',vn) # ==, of ==,
                     sec['streamRtns'] = sec['streamRtns'] + njx
             elif (vn[0:2] == '<<'): #get and store token
                 print('test vn=(' + vn + ")")
                 rv = vn[2:-2]
+                vna = 'M' + sec['sy']['SQSQ'].SQin(rv)
                 # add code if not exists
+                vanl = -2 # setup
                 try:
                     vnal = sec['M'][vn].__len__()
                 except:
@@ -211,8 +225,13 @@ def verbs():
                 else:
                     #add
                     vnal = sec['M'][vn] = vn # remember
+                    # add your name to the symbol table
+                    ax =sec['hx3M'].replace('%vn%',vn)
+                    ax =ax.replace('%vna%',vna)
+                    sec['mx3'] = sec['mx3'] + ax
                     njx = sec['hclM'] # template
                     njx = njx.replace('%rv%',rv)
+                    njx = njx.replace('%vn%',vn)
                     print('njx =((' + njx + "))")
                     sec['streamRtns'] = sec['streamRtns'] + njx
             else:
@@ -357,6 +376,16 @@ def main(startpoint,trace='off'):
     p['sy']['%pn%'] = %pn%
     #
 """
+    sec['hx3EQ'] = """
+    # paragraph %vn%
+    p['sy']['%vn%'] = %vna%
+    #
+"""
+    sec['hx3M'] = """
+    # paragraph %vn%
+    p['sy']['%vn%'] = %vna%
+    #
+"""
     sec['hx4'] = """
     p['sy']['start'] = p['sy'][startpoint] 
 #end main
@@ -446,18 +475,18 @@ def %pgn%_%cln%():
     #endif
 """
     sec['hclEQ'] = """
-def EQ%rv%():
+def %vna%(p):
     logg ('%vn%')
     needle = '%rv%'
     needle = needle.upper()
     return(eqeq(needle))
-#end EQmark
+#end %vna%
 """
     sec['hclM'] = """
 def M%rv%(p):
-    logg ('<<%rv%>>')
+    logg ('<<%vn%>>')
     j = p['sy']['fio'].fpwd()
-    p['v'][%rv%'] = j
+    p['v']['%vn%'] = j
 #endif M%rv%
 """
 #end prepSec

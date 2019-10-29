@@ -1,0 +1,22 @@
+from Cheetah.Template import Template
+T1 = Template(' t1 t $na ')
+T1.na = 'box'
+print(T1)
+T2 = Template(' t2 t $na ')
+T2.na = 'me'
+print(T2)
+# works
+a = T1.__str__() # final T1 into a WITHOUT markers
+a = a + " $na "
+# reset T1
+T1 = Template(a)
+# this is a new incantation no namespaces are declared
+T1.na = 'sam'
+print(T1) #works
+B = T2.__str__()
+B = B + '$nax'
+T3 = Template(B)
+#T3.na = 'one'
+#print(T3) # gives error 'nax' not found
+T3.nax = 'I am Jax '
+print(T3)

@@ -1,0 +1,25 @@
+The main commands of frame technology
+- invoke a frame (a procedure call that occurs at construction time, while constructing program texts);
+-- "call"/"run" an assembly
+--- managed by basii paragraph management
+-- input management
+
+- assign a (list of) expression(s) to a frame parameter (a construction-time variable assignment);
+-- better to use arrays of variables.
+-- let var{[expression]} = expression?
+
+- insert frame-text 
+-- before, instead-of, or after blocks of frame-text (ie markers), 
+--- (OR beginning of file, or append to file?) 
+-labeled by parameter expressions;
+- instantiate a frame parameter (a construction-time expression evaluation);
+-- apply an assembly to a frame/template
+--- all var markers will be replaced
+- select frame-texts for processing (a construction-time case statement);
+-- where is this different from instantiate a frame parameter?
+- iterate a frame-text while varying certain frame parameters (a construction-time while statement).
+-- more like a FOR loop
+
+- output management
+-- set output filename
+-- output frame to file

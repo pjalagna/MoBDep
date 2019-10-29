@@ -1,0 +1,19 @@
+<project> sys1 </project>
+SCREEN sys1S ((
+<title> infix demonstrator input screen </title>
+<display>
+a1 text-element1 ; b1 text-operator ; c1 text-element2 ;
+c1 button-go ; <cv> go ( target=sysSvc.php ) </cv>
+</display>
+))
+
+SERVICE sysSvc ((
+start :- 
+[[ 1 ]] operator @ "+" = "element1" @ element2 @ + answer ! send .
+[[ 2 ]] operator @ "-" = "element1" @ element2 @ - answer ! send .
+[[ 3 ]] operator @ "*" = "element1" @ element2 @ * answer ! send .
+[[ 4 ]] operator @ "/" = "element1" @ element2 @ / answer ! send .
+;
+send :- 
+[[ 1 ]] 
+))

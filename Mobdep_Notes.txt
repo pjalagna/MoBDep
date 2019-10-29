@@ -1,0 +1,58 @@
+file mobdep_notes.txt
+pja 8/17/2019
+key .. == pword
+
+[[0]] pword ...
+[[1]] =svc <location> .. =:- //c-stuff// tail. .
+[[-]] =def //def-stuff// tail. .
+[[2]] =@endend exit .
+;
+def def-stuff :-
+[[0]] .. ...
+[[1]] =use <location> .. =as <name> .. =; .
+[[2]] <name> .. =:- //c-stuff// .. =; .
+;
+
+def c-stuff :-
+[[0]] pword ...
+[[1]] =; exit. .
+[[2]] =[[ <number> .. =]] //vstuff// tail. .
+[[3]] .
+;
+
+def vstuff :-
+[[0]] pword ...
+[[1]] =. exit.
+[[2]] =; exit.
+[[3]] =... exit.
+[[4]] =tail. exit.
+[[5]] =fail. exit.
+[[6]] c1=Quote <string> tail.
+[[7]] <verb> tail. 
+;
+
+
+pja 3/31/2019
+syntax input objects (form objects)
+input type name "["attributes k=v"]" "value=" string ;
+** all input element emit (on submit) a name=Value statement
+-- some use a onSubmit() function
+-- see chart for conversion
+pja 3/22/2019
+object <- object2 ; clone of same type objects given new name
+
+html objects
+<< na == input text
+<< na (cols,rows) == textarea
+"form" name actionPath ((sections));
+"table" na (cols,rows) (([[sections]]+ ));
+sections :- 
+[1] tableName.col.row  = object
+[2] <!--tableName.col.row--> = object
+
+pword:-
+[1] quote till quote
+[2] tick till tick
+[2.1] "/*" till "*/"
+[3] nonspace till space
+[4] nonspace till comma
